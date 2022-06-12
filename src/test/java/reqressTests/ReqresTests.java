@@ -1,5 +1,6 @@
+package reqressTests;
+
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,9 +9,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
-import static java.lang.String.format;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.is;
 
 public class ReqresTests {
     String BaseUrl = "https://reqres.in/";
@@ -22,8 +23,6 @@ public class ReqresTests {
     @DisplayName("Check user list")
     @ParameterizedTest(name = "On page {0}, looking for user with email {2}")
     void listUsers(int page, String url, String email) {
-
-//        String pathUrl = format("https://reqres.in/api/users?page='%s'", url);
 
         given()
                 .when()
