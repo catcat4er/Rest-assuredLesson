@@ -53,7 +53,7 @@ public class ReqresTests {
     }
 
 
-    @ValueSource(strings = {"1", "2", "111", "40000000000"})
+    @ValueSource(strings = {"0", "111", "40000000000"})
     @DisplayName("Single User not found")
     @ParameterizedTest (name = "Search user number {0}")
     void singleUserNotFound(String  idUser) {
@@ -94,7 +94,7 @@ public class ReqresTests {
                 .contentType(JSON)
                 .body(data)
                 .when()
-                .put(BaseUrl + "api/users")
+                .put(BaseUrl + "api/users/2")
                 .then()
                 .statusCode(200)
                 .body("name", is("Harry"))
@@ -111,7 +111,7 @@ public class ReqresTests {
                 .contentType(JSON)
                 .body(data)
                 .when()
-                .patch(BaseUrl + "api/users")
+                .patch(BaseUrl + "api/users/1")
                 .then()
                 .statusCode(200)
                 .body("name", is("Harry"))
